@@ -7,20 +7,18 @@ import { delay } from "../../app/utils";
 import DataUI from "./DataUI";
 import { DemoUser } from "./demo-user";
 
-// * API
-const fetchUsers = async () => {
-  // throw new Error("fake error");
-  await delay(1000);
-  return await axios.get<any, AxiosResponse<DemoUser[]>>(
-    "https://jsonplaceholder.typicode.com/users",
-  );
-};
-
-// * query-key mangement
-
 type DemoProps = {};
 
 const Demo: FC<DemoProps> = () => {
+  // * API
+  const fetchUsers = async () => {
+    // throw new Error("fake error");
+    await delay(1000);
+    return await axios.get<any, AxiosResponse<DemoUser[]>>(
+      "https://jsonplaceholder.typicode.com/users",
+    );
+  };
+
   // ! pure react hook
   const [users, setUsers] = useState<DemoUser[]>([]);
   const [error, setError] = useState<Error | null>(null);
