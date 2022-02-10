@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import OverlayMgr from "./components/OverlayMgr";
 import AuthContainer from "./containers/Auth/AuthContainer";
 import PhoneAuth from "./containers/Auth/PhoneAuth";
+import Demo from "./containers/Demo/Demo";
 import Profile from "./containers/Profile";
 import Todo from "./containers/Todo";
 
@@ -33,6 +34,15 @@ function App() {
           element={
             <RequireAuth>
               <Profile />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path={RouteEnum.demo}
+          element={
+            <RequireAuth>
+              <Demo />
             </RequireAuth>
           }
         />
