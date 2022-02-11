@@ -69,9 +69,10 @@ const Demo: FC<DemoProps> = () => {
     enabled: users.length > 0, // fetch after react state done fetching
   });
 
+  // ! get from query cache
   const queryClient = useQueryClient();
+  const queryCacheData = queryClient.getQueryData<DemoUser[]>("users");
 
-  const queryCacheData = queryClient.getQueryData("users");
   return (
     <>
       <Container maxWidth="xl">
