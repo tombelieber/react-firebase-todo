@@ -1,9 +1,9 @@
 import { Box, CircularProgress, List, Stack, Typography } from "@mui/material";
 import { FC, useState } from "react";
-import { useQuery } from "react-query";
-import { getTodos, TodoQueryFilter } from "../../api/todos/api";
+import { TodoQueryFilter } from "../../api/todos/api";
 import { useAppSelector } from "../../app/configs/redux/hooks";
 import { selectForceUser } from "../../app/configs/redux/slices/appSlice";
+import useTodoQuery from "../../app/hooks/useTodoQuery";
 import ControlPanel from "./ControlPanel";
 import TodoListItem from "./TodoListItem";
 import { TodoFilter } from "./types";
@@ -28,10 +28,7 @@ const TodoContainer: FC<TodoContainerProps> = () => {
     data: todos = [],
     isLoading,
     error,
-  } = useQuery(["todos", queryFilter], ({ queryKey }) => {
-    const [, queryFilter] = queryKey as [string, TodoQueryFilter];
-    return getTodos(user.id, queryFilter);
-  });
+  } = useTodoQuery(user.id, queryFilter);
 
   const [filter, setFilter] = useState<TodoFilter>({ completed: null });
 
