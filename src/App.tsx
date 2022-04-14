@@ -2,7 +2,10 @@
 
 import { CssBaseline } from "@mui/material";
 import { useState } from "react";
-import { ReactQueryDevtoolsPanel } from "react-query/devtools";
+import {
+  ReactQueryDevtools,
+  ReactQueryDevtoolsPanel,
+} from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth } from "./app/configs/router";
 import { RouteEnum } from "./app/configs/router/routes";
@@ -61,11 +64,7 @@ function App() {
         />
       </Routes>
 
-      <ReactQueryDevtoolsPanel
-        setIsOpen={setOpen}
-        isOpen={open}
-        handleDragStart={() => {}}
-      />
+      <ReactQueryDevtools />
     </>
   );
 }
