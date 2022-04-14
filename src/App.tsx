@@ -1,11 +1,7 @@
 // App.tsx
 
 import { CssBaseline } from "@mui/material";
-import { useState } from "react";
-import {
-  ReactQueryDevtools,
-  ReactQueryDevtoolsPanel,
-} from "react-query/devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth } from "./app/configs/router";
 import { RouteEnum } from "./app/configs/router/routes";
@@ -18,8 +14,6 @@ import Profile from "./containers/Profile";
 import Todo from "./containers/Todo";
 
 function App() {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
       <CssBaseline />
