@@ -13,6 +13,7 @@ import App from "./App";
 import { theme } from "./app/configs/mui-theme";
 import { queryClient } from "./app/configs/react-query";
 import { persistor, store } from "./app/configs/redux/store";
+import { RootStoreProvider } from "./app/mobx/rootStore";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -21,11 +22,13 @@ ReactDOM.render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
-            <StyledEngineProvider injectFirst>
-              <ThemeProvider theme={theme}>
-                <App />
-              </ThemeProvider>
-            </StyledEngineProvider>
+            <RootStoreProvider>
+              <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={theme}>
+                  <App />
+                </ThemeProvider>
+              </StyledEngineProvider>
+            </RootStoreProvider>
           </QueryClientProvider>
         </PersistGate>
       </Provider>

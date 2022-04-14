@@ -41,6 +41,15 @@ const ButtonAppBar: FC = () => {
         <Typography>{user?.username || user?.email || user?.phone}</Typography>
       </Button>
 
+      <Button
+        color="inherit"
+        onClick={() => push(RouteEnum.demo)}
+        style={{ textTransform: "none" }}
+        variant="outlined"
+      >
+        Demo
+      </Button>
+
       <SignOutButton />
     </>
   );

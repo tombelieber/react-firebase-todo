@@ -4,4 +4,5 @@ export enum RouteEnum {
   login = "/login",
   phone = "/phone",
   signup = "/signup",
+  demo = "/demo",
 }

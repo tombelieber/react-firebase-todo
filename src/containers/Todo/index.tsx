@@ -1,9 +1,11 @@
 import { Box, CircularProgress, List, Stack, Typography } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
-import { useQuery } from "react-query";
-import { getTodos, TodoQueryFilter } from "../../api/todos/api";
+import { TodoQueryFilter } from "../../api/todos/api";
 import { useAppSelector } from "../../app/configs/redux/hooks";
 import { selectForceUser } from "../../app/configs/redux/slices/appSlice";
+import useTodoQuery from "../../app/hooks/useTodoQuery";
+import { useRootStore } from "../../app/mobx/rootStore";
 import ControlPanel from "./ControlPanel";
 import TodoListItem from "./TodoListItem";
 import { TodoFilter } from "./types";
@@ -16,22 +18,19 @@ const toggleAscDesc = (dir: "asc" | "desc"): "asc" | "desc" => {
 
 type TodoContainerProps = {};
 
-const TodoContainer: FC<TodoContainerProps> = () => {
+const TodoContainer: FC<TodoContainerProps> = observer(() => {
   const user = useAppSelector(selectForceUser);
-
+  const { todos } = useRootStore().todoStore;
   const [queryFilter, setQueryFilter] = useState<TodoQueryFilter>({
     field: "createdAt",
     direction: "desc",
   });
 
   const {
-    data: todos = [],
+    // data: todos = [],
     isLoading,
     error,
-  } = useQuery(["todos", queryFilter], ({ queryKey }) => {
-    const [, queryFilter] = queryKey as [string, TodoQueryFilter];
-    return getTodos(user.id, queryFilter);
-  });
+  } = useTodoQuery(user.id, queryFilter);
 
   const [filter, setFilter] = useState<TodoFilter>({ completed: null });
 
@@ -116,6 +115,6 @@ const TodoContainer: FC<TodoContainerProps> = () => {
       </Stack>
     </Box>
   );
-};
+});
 
 export default TodoContainer;
