@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { TodoQueryFilter, getTodos } from "../../api/todos/api";
+import { getTodos, TodoQueryFilter } from "../../api/todos/api";
 import { useRootStore } from "../mobx/rootStore";
 
 export default function useTodoQuery(
@@ -16,10 +16,9 @@ export default function useTodoQuery(
     },
     {
       onSuccess: (todos) => {
-        console.log("todo", todos);
-
         setTodos(todos);
       },
+      cacheTime: 0, // do not cache in React-Query
     },
   );
 }
