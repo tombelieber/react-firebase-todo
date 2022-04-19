@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# React Firebase Todo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A demo app on fullstack todo app using
+* Firebase
+* React
+* TypeScript
+* React-Query
+* Redux-Toolkit
+* MUI
+* React-Hook-Form
+* React-Router
+
 
 ## Available Scripts
 
@@ -44,3 +53,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn check out the [React documentation](https://reactjs.org/).
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
